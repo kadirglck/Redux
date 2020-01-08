@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 import ListItem from './ListItem';
 
 class LibraryList extends Component{
-    renderItem(item) {
-        return <ListItem item={item} />;
+    renderItem(library) {
+        //console.log(library);
+        return <ListItem item={library} />
     }
     render(){
         return(
@@ -14,6 +15,7 @@ class LibraryList extends Component{
           renderItem={this.renderItem}//kullanıcıya göstereceğimiz bölüm
           //renderItem={({item}) => (<Text>{item.title}</Text>)}  ==> bu sekilde gösterme basarili
           keyExtractor={library => library.id.toString()}//elemanların id degerlerini tanımlama(string olmalı)
+
           />
         );
     }
