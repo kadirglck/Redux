@@ -3,10 +3,11 @@ import {FlatList, Text} from 'react-native';
 import {connect} from 'react-redux';
 import ListItem from './ListItem';
 
-class LibraryList extends Component{
-    renderItem(library) {
+ class LibraryList extends Component{
+
+    renderItem({item}) {
         //console.log(library);
-        return <ListItem item={library} />
+        return <ListItem item={item} />
     }
     render(){
         return(
@@ -14,7 +15,7 @@ class LibraryList extends Component{
           data={this.props.libraries}//listemiz
           renderItem={this.renderItem}//kullanıcıya göstereceğimiz bölüm
           //renderItem={({item}) => (<Text>{item.title}</Text>)}  ==> bu sekilde gösterme basarili
-          keyExtractor={library => library.id.toString()}//elemanların id degerlerini tanımlama(string olmalı)
+          keyExtractor={library => library.id.toString()}
 
           />
         );
@@ -22,6 +23,7 @@ class LibraryList extends Component{
 }
 
 const mapStateToProps = state => {
+
     return{libraries : state.libraries};
 };
 
